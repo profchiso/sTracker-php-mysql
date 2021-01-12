@@ -1,0 +1,1 @@
+cat smarttrackerdb.sql | docker exec -i db mysql -u root -pchinedu smarttrackerdb ====command to import sql into a dockerized mysql db
