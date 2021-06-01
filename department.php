@@ -77,78 +77,82 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Add Department</title>
-		<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-   
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+
+
 </head>
+
 <body>
-	<div class="page-header" align="center">
-	<br />
+    <div class="page-header" align="center">
+        <br />
         <h1>Add Department </h1>
-		<p> <a href="admindashboard.php" class="btn btn-warning">Go Back</a> 
-        <a href="adminlogout.php" class="btn btn-danger">Sign Out of Your Account</a>
-		</p> <br />
+        <p> <a href="admindashboard.php" class="btn btn-warning">Go Back</a>
+            <a href="adminlogout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        </p> <br />
     </div>
 
 
-	<div class="limiter">
-		<div class="container-login100">
-		<div class="wrap-login100">
-		<span class="login100-form-title p-b-26">
-						Add New Department</span>
-		<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-globe-lock"> </i>
-					</span>						
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($department_err)) ? 'has-error' : ''; ?>">
-                <label>Department </label>
-                <input type="text" name="department" class="form-control" value="<?php echo $department; ?>">
-                <span class="help-block"><?php echo $department_err; ?></span>
-            </div>    
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title p-b-26">
+                    Add New Department</span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-globe-lock"> </i>
+                </span>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group <?php echo (!empty($department_err)) ? 'has-error' : ''; ?>">
+                        <label>Department </label>
+                        <input type="text" name="department" class="form-control" value="<?php echo $department; ?>">
+                        <span class="help-block"><?php echo $department_err; ?></span>
+                    </div>
 
 
-			<div class="container-login100-form-btn">
-				<div class="wrap-login100-form-btn">
-					<div class="login100-form-bgbtn"></div>
-					<button class="login100-form-btn"> 
-						Submit
-					</button>
-				</div>
-			</div>
-	 
-			<br /> <br />
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
 
-        </form>
-		
-	 </div> </div>	
-    </div>    
+                    <br /> <br />
+
+                </form>
+
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

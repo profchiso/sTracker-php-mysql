@@ -81,86 +81,88 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Track paper Document</title>
-		<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-<script>
-function showUser(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <script>
+    function showUser(str) {
+        if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
         } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
-        };
-        xmlhttp.open("GET","getdoc.php?q="+str,true);
-        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "getdoc.php?q=" + str, true);
+            xmlhttp.send();
+        }
     }
-}
-</script>
+    </script>
 
 
 
 </head>
+
 <body>
-	<div class="page-header" align="center">
-	<br />
+    <div class="page-header" align="center">
+        <br />
         <h1>Welcome <b><?php echo htmlspecialchars ($_SESSION["staff_no"]); ?></b>. </h1>
-		<p> <a href="track.php" class="btn btn-warning">Go Back</a> 
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-		</p> <br />
+        <p> <a href="track.php" class="btn btn-warning">Go Back</a>
+            <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        </p> <br />
     </div>
-	
-	<div class="limiter">
-		<div class="container-login100">
-		<div class="wrap-login100">
-				<span class="login100-form-title p-b-26">
-						Track Paper Document</span>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title p-b-26">
+                    Track Paper Document</span>
 
 
-<form action="track.php" method="post"> 
-		
-				<div class="form-group <?php echo (!empty($ref_no_err)) ? 'has-error' : ''; ?>">
-                <label>Document Reference Number</label>
-				<select name="ref_no" style="width:100%; height:40px;" onchange="showUser(this.value)">
-				<option value="" selected style="color: grey;">Select Document Ref No.</option>
-					<?php
+                <form action="track.php" method="post">
+
+                    <div class="form-group <?php echo (!empty($ref_no_err)) ? 'has-error' : ''; ?>">
+                        <label>Document Reference Number</label>
+                        <select name="ref_no" style="width:100%; height:40px;" onchange="showUser(this.value)">
+                            <option value="" selected style="color: grey;">Select Document Ref No.</option>
+                            <?php
 					require_once('/connect.php');
 					$param_where = $_SESSION["staff_no"];
 					$query = "Select ref_no, docname, owner from paper";
@@ -171,30 +173,31 @@ function showUser(str) {
 						echo htmlspecialchars($f);
 						echo "</option>";
 						}
-					?>				
-			</select>
-			<span class="help-block"><?php echo $ref_no_err; ?></span>
-			<br>
-			<div id="txtHint"><b>Document info will be listed here...</b></div>
-            </div>
+					?>
+                        </select>
+                        <span class="help-block"><?php echo $ref_no_err; ?></span>
+                        <br>
+                        <div id="txtHint"><b>Document info will be listed here...</b></div>
+                    </div>
 
-			
-            
-			
-			
-			<div class="container-login100-form-btn">
-				<div class="wrap-login100-form-btn">
-					<div class="login100-form-bgbtn"></div>
-					<button class="login100-form-btn"> 
-						Go Back
-					</button>
-				</div>
-			</div>
-        </form>
-		</div>  
-		</div> 
-	</div> 	
-	
+
+
+
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Go Back
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 </body>
+
 </html>

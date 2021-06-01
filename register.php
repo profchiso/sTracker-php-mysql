@@ -133,93 +133,96 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Sign Up</title>
-		<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-   
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+
+
 </head>
+
 <body>
-	<div class="page-header" align="center">
-	<br />
+    <div class="page-header" align="center">
+        <br />
         <h1>Add New Staff </h1>
-		<p> <a href="admindashboard.php" class="btn btn-warning">Go Back</a> 
-        <a href="adminlogout.php" class="btn btn-danger">Sign Out of Your Account</a>
-		</p> <br />
+        <p> <a href="admindashboard.php" class="btn btn-warning">Go Back</a>
+            <a href="adminlogout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        </p> <br />
     </div>
 
 
-	<div class="limiter">
-		<div class="container-login100">
-		<div class="wrap-login100">
-		<span class="login100-form-title p-b-26">
-						Sign Up</span>
-		<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-globe-lock"> </i>
-					</span>						
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($staff_no_err)) ? 'has-error' : ''; ?>">
-                <label>Staff Number (e.g. SS123)</label>
-                <input type="text" name="staff_no" class="form-control" value="<?php echo $staff_no; ?>">
-                <span class="help-block"><?php echo $staff_no_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password (More than 6 charcters)</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
-            </div>
-			<div class="form-group <?php echo (!empty($surname_err)) ? 'has-error' : ''; ?>">
-                <label>Surname</label>
-                <input type="text" name="surname" class="form-control" value="<?php echo $surname; ?>">
-                <span class="help-block"><?php echo $surname_err; ?></span>
-            </div> 
-			  <div class="form-group <?php echo (!empty($othernames_err)) ? 'has-error' : ''; ?>">
-                <label>Other Names</label>
-                <input type="text" name="othernames" class="form-control" value="<?php echo $othernames; ?>">
-                <span class="help-block"><?php echo $othernames_err; ?></span>
-            </div> 
-			<div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
-                <span class="help-block"><?php echo $email_err; ?></span>
-            </div> 
-			
-			<div class="form-group <?php echo (!empty($dept_err)) ? 'has-error' : ''; ?>">
-			<label>Department</label>
-			<select name="dept"  style="width:100%; height:40px;">
-					<option value="" selected style="color: grey;">Select department</option>
-					<?php
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title p-b-26">
+                    Sign Up</span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-globe-lock"> </i>
+                </span>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group <?php echo (!empty($staff_no_err)) ? 'has-error' : ''; ?>">
+                        <label>Staff Number (e.g. SS123)</label>
+                        <input type="text" name="staff_no" class="form-control" value="<?php echo $staff_no; ?>">
+                        <span class="help-block"><?php echo $staff_no_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                        <label>Password (More than 6 charcters)</label>
+                        <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
+                        <span class="help-block"><?php echo $password_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control"
+                            value="<?php echo $confirm_password; ?>">
+                        <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($surname_err)) ? 'has-error' : ''; ?>">
+                        <label>Surname</label>
+                        <input type="text" name="surname" class="form-control" value="<?php echo $surname; ?>">
+                        <span class="help-block"><?php echo $surname_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($othernames_err)) ? 'has-error' : ''; ?>">
+                        <label>Other Names</label>
+                        <input type="text" name="othernames" class="form-control" value="<?php echo $othernames; ?>">
+                        <span class="help-block"><?php echo $othernames_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
+                        <span class="help-block"><?php echo $email_err; ?></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($dept_err)) ? 'has-error' : ''; ?>">
+                        <label>Department</label>
+                        <select name="dept" style="width:100%; height:40px;">
+                            <option value="" selected style="color: grey;">Select department</option>
+                            <?php
 					require_once('/connect.php');
 					$query = "Select dept from department";
 					$result=mysql_query($query);
@@ -229,30 +232,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						echo htmlspecialchars($f);
 						echo "</option>";
 						}
-					?>				
-			</select>
-                <span class="help-block"><?php echo $dept_err; ?></span>
-            </div> 
-			<div class="form-group <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
-                <label>Phone Number</label>
-                <input type="text" name="phone" class="form-control" value="<?php echo $phone; ?>">
-                <span class="help-block"><?php echo $phone_err; ?></span>
-            </div> 
-			
-			<div class="container-login100-form-btn">
-				<div class="wrap-login100-form-btn">
-					<div class="login100-form-bgbtn"></div>
-					<button class="login100-form-btn"> 
-						Submit
-					</button>
-				</div>
-			</div>
-	 
-			<br /> <br />
-            <p>Already have an account? <a href="index.php">Login here</a>.</p>
-        </form>
-		
-	 </div> </div>	
-    </div>    
+					?>
+                        </select>
+                        <span class="help-block"><?php echo $dept_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
+                        <label>Phone Number</label>
+                        <input type="text" name="phone" class="form-control" value="<?php echo $phone; ?>">
+                        <span class="help-block"><?php echo $phone_err; ?></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+
+                    <br /> <br />
+                    <p>Already have an account? <a href="index.php">Login here</a>.</p>
+                </form>
+
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
