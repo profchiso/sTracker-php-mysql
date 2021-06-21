@@ -61,32 +61,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$param_remark =  $remark;
 			$param_status = "Not Recieved";
        
-            
-          try{
+	   
             	// Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
 
-            	// Start of SMS script
+			// Start of SMS script
 				require_once('sms.php');
-				// send email notifications
-				//require_once('sendemail.php');
+			//End of SMS script	
 
-				//display alert message on browser screen
-				$message = " Your Document was Successfully forwarded!";	
+			
+	/*		// send email to the recipient
+			require_once('/connect.php');
+			$query3 = "Select email from users where staff_no='{$_SESSION['sn']}' ";
+			$result2=mysql_query($query3);
+			while($row = mysql_fetch_array($result2) ){
+			$to = $row['email'];}
+			$subject = 'SmartTracker eAlert';
+			$message = 'A File have been sent to you from SmartTracker. Login and attend to it. Please do not reply this email, it is an auto-generated email.';
+			$headers = 'From: admin@smarttracker.com';
+			mail($to, $subject, $message, $headers); 
+
+			echo $_SESSION['sn'];
+	    
+			//End of Email script
+			*/
+		
+		exit(); 
+		
+			$message = " Your Document was Successfully forwarded!";	
 				echo"<font color='red'><script type='text/javascript'> alert('$message');</script> </font>";
                 // Redirect to paper page
-				echo "<script type='text/javascript'>location.href = 'electronic.php'</script>";
-			}
-			else{
-            	throw new Exception("Something went wrong. Please try again later.");
-                // echo "Something went wrong. Please try again later." . mysqli_error($link);
+				echo "<script type='text/javascript'>location.href = 'paper.php'</script>";
+				//exit("message sent"); 
+            } else{
+                echo "Something went wrong. Please try again later." . mysqli_error($link);
             }
-		}catch (exception $e){
-					alert( $e->getMessage());
-				}
-									
-				}
-						
+				
+				
 			$sql2 = "UPDATE edoc SET current_handler = '$param_recipient' WHERE ref_no = '$param_ref_no'";
 			if (mysqli_query($link, $sql2)) {
 			echo "";
@@ -102,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Close connection
     mysqli_close($link);
-
+}
 ?>
  
 <!DOCTYPE html>
@@ -115,21 +126,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="asset/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="asset/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="asset/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="asset/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="asset/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="asset/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -204,6 +215,7 @@ function showR(str) {
 		
 				<div class="form-group <?php echo (!empty($ref_no_err)) ? 'has-error' : ''; ?>">
                 <label>Document Reference Number</label>
+				
 				<select name="ref_no" style="width:100%; height:40px;" onchange="showUser(this.value)">
 				<option value="" selected style="color: grey;">Select Document Ref No.</option>
 					<?php
