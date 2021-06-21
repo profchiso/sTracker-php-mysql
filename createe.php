@@ -133,71 +133,74 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Create Electronic Document</title>
-		<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
 
 </head>
+
 <body>
-	<div class="page-header" align="center">
-	<br />
+    <div class="page-header" align="center">
+        <br />
         <h1>Welcome <b><?php echo htmlspecialchars ($_SESSION["staff_no"]); ?></b>. </h1>
-		<p> <a href="electronic.php" class="btn btn-warning">Go Back</a> 
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-		</p> <br />
+        <p> <a href="electronic.php" class="btn btn-warning">Go Back</a>
+            <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        </p> <br />
     </div>
-	
-	<div class="limiter">
-		<div class="container-login100">
-		<div class="wrap-login100">
-				<span class="login100-form-title p-b-26">
-						Create Electronic Document</span>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title p-b-26">
+                    Create Electronic Document</span>
 
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data"> 
-		
-		    <div class="form-group <?php echo (!empty($ref_no_err)) ? 'has-error' : ''; ?>">
-                <label>Document Reference Number</label>
-                <input type="text" name="ref_no" class="form-control" value="<?php echo $ref_no; ?>">
-                <span style="color:red" class="help-block"><?php echo $ref_no_err; ?></span>
-            </div>
-			<div class="form-group <?php echo (!empty($docname_err)) ? 'has-error' : ''; ?>">
-                <label>Document Title</label>
-                <input type="text" name="docname" class="form-control" value="<?php echo $docname; ?>">
-                <span style="color:red" class="help-block"><?php echo $docname_err; ?></span>
-            </div>
-      <div class="form-group <?php echo (!empty($owner_err)) ? 'has-error' : ''; ?>">
-                <label>Owner's Name</label>
-				<select name="owner"  style="width:100%; height:40px;">
-					<option value="" selected style="color: grey;">Select Document Owner</option>
-					<?php
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"
+                    enctype="multipart/form-data">
+
+                    <div class="form-group <?php echo (!empty($ref_no_err)) ? 'has-error' : ''; ?>">
+                        <label>Document Reference Number</label>
+                        <input type="text" name="ref_no" class="form-control" value="<?php echo $ref_no; ?>">
+                        <span style="color:red" class="help-block"><?php echo $ref_no_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($docname_err)) ? 'has-error' : ''; ?>">
+                        <label>Document Title</label>
+                        <input type="text" name="docname" class="form-control" value="<?php echo $docname; ?>">
+                        <span style="color:red" class="help-block"><?php echo $docname_err; ?></span>
+                    </div>
+                    <div class="form-group <?php echo (!empty($owner_err)) ? 'has-error' : ''; ?>">
+                        <label>Owner's Name</label>
+                        <select name="owner" style="width:100%; height:40px;">
+                            <option value="" selected style="color: grey;">Select Document Owner</option>
+                            <?php
 					require_once 'config.php';
 					$query = "Select staff_no, surname, othernames from users";
 					$result=mysqli_query($link, $query);
@@ -207,17 +210,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						echo htmlspecialchars($f);
 						echo "</option>";
 						}
-					?>				
-			</select>
-				
-                <span style="color:red" class="help-block"><?php echo $owner_err; ?></span>
-            </div>
-	         
-				<div class="form-group <?php echo (!empty($department_err)) ? 'has-error' : ''; ?>">
-                <label>Department</label>
-				<select name="department"  style="width:100%; height:40px;">
-					<option value="" selected style="color: grey;">Select your Department</option>
-					<?php
+					?>
+                        </select>
+
+                        <span style="color:red" class="help-block"><?php echo $owner_err; ?></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($department_err)) ? 'has-error' : ''; ?>">
+                        <label>Department</label>
+                        <select name="department" style="width:100%; height:40px;">
+                            <option value="" selected style="color: grey;">Select your Department</option>
+                            <?php
 					require_once 'config.php';
 					$query = "Select dept from department";
 					$result=mysqli_query($link, $query);
@@ -227,35 +230,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						echo htmlspecialchars($f);
 						echo "</option>";
 						}
-					?>				
-			</select>
-				
-                <span style="color:red" class="help-block"><?php echo $department_err; ?></span>
-            </div>			
-			
-			<div class="form-group <?php echo (!empty($attach_err)) ? 'has-error' : ''; ?>">
-                <label>Attach signed document, It will be signed</label>
-			<input type="file" name="Filename" class="form-control" value="<?php echo $file; ?>">	
-			<span style="color:red" class="help-block"><?php echo $file_err; ?></span>
-            </div>	
-			
-			<div class="form-group <?php echo (!empty($remark_err)) ? 'has-error' : ''; ?>">
-                <label>Remarks</label>
-				<textarea style="border-style:double" name="remark" placeholder="Enter remarks. Cannot be empty." rows="5" cols="33%"></textarea>
-                <span style="color:red" class="help-block"><?php echo $remark_err; ?></span>
+					?>
+                        </select>
+
+                        <span style="color:red" class="help-block"><?php echo $department_err; ?></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($attach_err)) ? 'has-error' : ''; ?>">
+                        <label>Attach signed document, It will be signed</label>
+                        <input type="file" name="Filename" class="form-control" value="<?php echo $file; ?>">
+                        <span style="color:red" class="help-block"><?php echo $file_err; ?></span>
+                    </div>
+
+                    <div class="form-group <?php echo (!empty($remark_err)) ? 'has-error' : ''; ?>">
+                        <label>Remarks</label>
+                        <textarea style="border-style:double" name="remark"
+                            placeholder="Enter remarks. Cannot be empty." rows="5" cols="33%"></textarea>
+                        <span style="color:red" class="help-block"><?php echo $remark_err; ?></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-			
-			<div class="container-login100-form-btn">
-				<div class="wrap-login100-form-btn">
-					<div class="login100-form-bgbtn"></div>
-					<button class="login100-form-btn"> 
-						Submit
-					</button>
-				</div>
-			</div>
-        </form>
-		</div>  
-		</div> 
-	</div> 	
+        </div>
+    </div>
 </body>
+
 </html>

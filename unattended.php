@@ -15,65 +15,72 @@ require_once "config.php";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Unattended Document</title>
-		<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-<style>
-table, tr {
-    width: 100%;
-    border-collapse: collapse;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <style>
+    table,
+    tr {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-table, td, th {
-    border: 2px solid black;
-    padding: 2px;
-}
+    table,
+    td,
+    th {
+        border: 2px solid black;
+        padding: 2px;
+    }
 
-th {text-align: left;}
-</style>
+    th {
+        text-align: left;
+    }
+    </style>
 </head>
-<body>
-	<div class="page-header" align="center">
-	<br />
-        <h1>Welcome <b><?php echo htmlspecialchars ($_SESSION["staff_no"]); ?></b>. </h1>
-		<p> <a href="welcome.php" class="btn btn-warning">Go Back</a> 
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-		</p> <br />
-    </div>
-	
-	<div class="limiter">
-		<div class="container-login100">
-		<div class="wrap-login100">
-				<span class="login100-form-title p-b-26">
-						Unattended Document</span>
 
-		<div>
-        <b><label>Paper Documents</label></b>
-		<?php
+<body>
+    <div class="page-header" align="center">
+        <br />
+        <h1>Welcome <b><?php echo htmlspecialchars ($_SESSION["staff_no"]); ?></b>. </h1>
+        <p> <a href="welcome.php" class="btn btn-warning">Go Back</a>
+            <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        </p> <br />
+    </div>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title p-b-26">
+                    Unattended Document</span>
+
+                <div>
+                    <b><label>Paper Documents</label></b>
+                    <?php
 
 		$q = $_SESSION["staff_no"];
 		$owner = $docname = "";
@@ -141,13 +148,14 @@ echo "</table>";
 
 
 mysqli_close($link);
-?>		
-				
-		<br>	
-		</div>  
-		</div> 
-	</div> 	
-	
+?>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+
 
 </body>
+
 </html>
